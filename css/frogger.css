@@ -1,0 +1,105 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+
+.container {
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stopwatchdiv {
+    font-size: 20px;
+    margin-top: 10px;
+    text-align: center;
+    color: #333;
+}
+
+.stopwatchdiv p {
+    margin: 0;
+}
+
+.grid {
+    width: 375px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid white;
+    background-color: black;
+    transform: scale(0.9);
+}
+
+.grid div {
+    height: 25px;
+    aspect-ratio: 1;
+}
+
+
+.finalposition {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.finalposition i {
+    color: white;
+    transform: scale(1.5);
+}
+
+.log1 {
+    background: url("../images/log-left.png") 0 0 no-repeat;
+    background-size: cover;
+
+}
+
+.log2 {
+    background: url("../images/log-centre.png") 0 0 no-repeat;
+    background-size: cover;
+}
+
+.log3 {
+    background: url("../images/log-right.png") 0 0 no-repeat;
+    background-size: cover;
+}
+
+.lorry1 {
+    background: url("../images/lorry-front.png") 0 0 no-repeat;
+    background-size: cover;
+}
+
+.lorry2 {
+    background: url("../images/lorry-back.png") 0 0 no-repeat;
+    background-size: cover;
+}
+
+.racecar1 {
+    background: url("../images/racecar.png") 0 0 no-repeat;
+    background-size: cover;
+}
+
+.tractorracecar {
+    background: url("../images/tractor.png") 0 0 no-repeat;
+    background-size: cover;
+}
+
+.tractor1 {
+    background: url("../images/tractor.png") 0 0 no-repeat;
+    background-size: cover;
+}
+
+.car1 {
+    background: url("../images/car1.png") 0 0 no-repeat;
+    background-size: cover;
+}
+
+.frog {
+    background: url("../images/frog.png") 0 0 no-repeat;
+    background-size: cover;
+    background-color: black;
+}
