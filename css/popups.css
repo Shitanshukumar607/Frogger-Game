@@ -1,0 +1,162 @@
+/*Main popup that comes just after opening the site*/
+.popup {
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: all 0.3s ease;
+}
+
+.popup-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    text-align: center;
+    border-radius: 5px;
+    color: #333;
+}
+
+.popup h2,
+.popup h3 {
+    color: black;
+}
+
+.popup ul,
+.popup ol {
+    list-style: none;
+    padding: 0;
+}
+
+.popup li {
+    margin-bottom: 10px;
+    color: #333;
+    gap: 10px;
+}
+
+.close {
+    color: black;
+    background-color: aliceblue;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: white;
+    background-color: #3498db;
+}
+/*Main popup styles ends here*/
+
+
+
+
+
+/*Styling for losing popup*/
+.lose-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -150px;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    opacity: 0;
+    border-radius: 5px;
+    transform: scale(0.001);
+    transition: all 0.3s ease;
+
+}
+
+.lose-popup .popup-content {
+    text-align: center;
+    margin: 0;
+
+}
+
+.lose-popup h2 {
+    color: #ff0000;
+}
+
+.lose-popup .play-again-lose-button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.lose-popup .play-again-lose-button:hover {
+    background-color: #45a049;
+}
+/*styling of losing popup ends here*/
+
+
+
+
+
+
+/* Style for Winning Pop-up */
+.win-popup {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%) scale(0.001);
+    opacity: 0;
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid #28a745;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.win-popup h2 {
+    color: #28a745;
+}
+
+.win-popup p {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.win-popup .win-time {
+    font-weight: bold;
+    color: #28a745;
+}
+
+.win-popup .play-again-win-button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.win-popup .play-again-win-button:hover {
+    background-color: #218838;
+}
+
+/*styling of winning popup ends here*/
