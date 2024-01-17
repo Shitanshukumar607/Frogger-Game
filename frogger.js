@@ -251,10 +251,13 @@ function win() {
 
     console.log("time is", time)
     console.log("besttime is", besttime)
-    if (time < besttime) {
+    if (time < besttime || besttime == 0) {
         besttime = time
         localStorage.setItem("key", JSON.stringify(besttime));
         console.log("best time is ", besttime)
+    } else {
+        besttime = JSON.parse(localStorage.getItem("key"))
+        console.log("getting from local storage")
     }
     besttimeEl.textContent = besttime
 
@@ -326,7 +329,7 @@ function clearintervals() {
     clearInterval(stopwatchInterval);
 }
 
-// Initialize intervals for vehicle movements and outcome checking
+// Initialize intervals for vehicle movements and outcome checking and stopwatch
 let carLeftInterval, tractorRightInterval, raceCarRightInterval, lorryLeftInterval, logRightInterval, logLeftInterval, outcomeCheckInterval, stopwatchInterval;
 
 // Start all intervals
@@ -357,10 +360,11 @@ let besttime = 0
 const besttimeEl = document.querySelector(".besttime")
 
 // Retrieve best time from local storage or initialize
-besttime = JSON.parse(localStorage.getItem("key"))
-if (besttime == null) {
+besttime = localStorage.getItem("key")
+console.log(besttime)
+if (besttime === null) {
     besttime = 0
-    console.log("besttime null")
+    console.log("besttime", besttime)
 }
 besttimeEl.textContent = besttime
 console.log("besttime is", besttime)
