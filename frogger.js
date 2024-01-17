@@ -26,22 +26,40 @@ const logleftEls = document.querySelectorAll(".logleft")
 // Setting up grid properties
 const width = 15
 let currentIndex = 232
+let detectswipes = false
 
 // Event listener for removing popup and starting game
 closepopulEl.addEventListener("click", () => {
     popupEl.style.opacity = "0"
-    popupEl.style.transform = "scale(0.001)"
+    popupEl.style.transform = "translate(-50%, -50%) scale(0.001)"
+    detectswipes = true
     startintervals()
     addeventlistenertobtns()
 })
 
 // Function to add event listeners to directional buttons
 function addeventlistenertobtns() {
-    upBtn.addEventListener("click", up)
-    downBtn.addEventListener("click", down)
-    leftBtn.addEventListener("click", left)
-    rightBtn.addEventListener("click", right)
+    document.body.addEventListener('keydown', keyfunctions)
 }
+
+function keyfunctions(event) {
+    const key = event.key;
+    switch (event.key) {
+        case "ArrowLeft":
+            left()
+            break;
+        case "ArrowRight":
+            right()
+            break;
+        case "ArrowUp":
+            up()
+            break;
+        case "ArrowDown":
+            down()
+            break;
+    }
+}
+
 
 // Move frog upwards
 function up() {
@@ -86,10 +104,7 @@ function right() {
 
 // Remove event listeners from directional buttons
 function removeeventlistenertobtns() {
-    upBtn.removeEventListener("click", up)
-    downBtn.removeEventListener("click", down)
-    leftBtn.removeEventListener("click", left)
-    rightBtn.removeEventListener("click", right)
+    document.body.removeEventListener('keydown', keyfunctions)
 }
 
 // Move cars to the left
@@ -212,10 +227,12 @@ function checkoutcome() {
         clearintervals()
         removeeventlistenertobtns()
         win()
+        detectswipes = false
     }
     if (squares[currentIndex].classList.contains("log1") || squares[currentIndex].classList.contains("log2") || squares[currentIndex].classList.contains("log3") || squares[currentIndex].classList.contains("lorry1") || squares[currentIndex].classList.contains("lorry2") || squares[currentIndex].classList.contains("tractor1") || squares[currentIndex].classList.contains("car1") || squares[currentIndex].classList.contains("racecar1") || squares[currentIndex].classList.contains("tractorracecar")) {
 
         lose()
+        detectswipes = false
 
     }
 }
@@ -257,7 +274,6 @@ function win() {
 
 // Reset game state after winning 
 function winstart() {
-    timerrestart()
     currentIndex = 232
     squares.forEach(value => {
         value.classList.remove("frog")
@@ -268,6 +284,8 @@ function winstart() {
     winpopupEl.style.transform = "translate(-50%, -50%) scale(0.001)"
     startintervals()
     addeventlistenertobtns()
+    timerrestart()
+    detectswipes = true
 }
 
 // Handle lose scenario
@@ -282,7 +300,6 @@ function lose() {
 
 // Reset game state after losing
 function losestart() {
-    timerrestart()
     currentIndex = 232
     squares.forEach(value => {
         value.classList.remove("frog")
@@ -293,6 +310,8 @@ function losestart() {
     losepopupEl.style.transform = "scale(0.001)"
     startintervals()
     addeventlistenertobtns()
+    timerrestart()
+    detectswipes = true
 }
 
 // Clear all intervals
@@ -400,3 +419,66 @@ function timerrestart() {
     formattedHours;
     time = 0;
 }
+
+
+
+
+
+
+
+
+
+//everything under this line detects swipes across the screen and DO NOT ASK ME WHAT HOW IT WORKS BUT IT WORKS
+
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchmove', handleTouchMove, false);
+
+var xDown = null;
+var yDown = null;
+
+function getTouches(evt) {
+    return evt.touches || // browser API
+        evt.originalEvent.touches; // jQuery
+}
+
+function handleTouchStart(evt) {
+    const firstTouch = getTouches(evt)[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+};
+
+function handleTouchMove(evt) {
+    if (!xDown || !yDown) {
+        return;
+    }
+
+    var xUp = evt.touches[0].clientX;
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+    if (detectswipes == true) {
+        if (Math.abs(xDiff) > Math.abs(yDiff)) {
+            /*most significant*/
+            if (xDiff > 0) {
+                left()
+                /* right swipe */
+            } else {
+                right()
+                /* left swipe */
+            }
+        } else {
+            if (yDiff > 0) {
+                up()
+                /* down swipe */
+            } else {
+                down()
+                /* up swipe */
+            }
+        }
+    }
+
+    /* reset values */
+    xDown = null;
+    yDown = null;
+};
