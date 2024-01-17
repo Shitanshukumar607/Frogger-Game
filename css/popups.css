@@ -1,11 +1,12 @@
 /*Main popup that comes just after opening the site*/
 .popup {
     display: flex;
-    position: fixed;
+    position: absolute;
+    transform: translate(-50%, -50%) scale(0.8);
     z-index: 1;
-    left: 0;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    top: 50%;
+    left: 50%;
+    width: 90%;
     transition: all 0.3s ease;
 }
 
@@ -14,7 +15,7 @@
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 100%;
     text-align: center;
     border-radius: 5px;
     color: #333;
@@ -53,6 +54,7 @@
     color: white;
     background-color: #3498db;
 }
+
 /*Main popup styles ends here*/
 
 
@@ -104,6 +106,7 @@
 .lose-popup .play-again-lose-button:hover {
     background-color: #45a049;
 }
+
 /*styling of losing popup ends here*/
 
 
