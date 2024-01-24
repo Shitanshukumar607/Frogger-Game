@@ -295,7 +295,7 @@ function winstart() {
 function lose() {
     clearintervals()
     removeeventlistenertobtns()
-    console.log("hi")
+    console.log("You lose")
     losepopupEl.style.opacity = "1"
     losepopupEl.style.transform = "scale(1)"
     playagainlosebtn.addEventListener("click", losestart)
